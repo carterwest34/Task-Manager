@@ -11,6 +11,7 @@
 		7803DB2421503342004EF723 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7803DB2321503342004EF723 /* Menu.swift */; };
 		7803DB262150334F004EF723 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7803DB252150334F004EF723 /* Task.swift */; };
 		7803DB2821516994004EF723 /* TaskItself.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7803DB2721516994004EF723 /* TaskItself.swift */; };
+		780416BD2152D9FA0065B0A9 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780416BC2152D9FA0065B0A9 /* Login.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,7 @@
 		7803DB2321503342004EF723 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		7803DB252150334F004EF723 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		7803DB2721516994004EF723 /* TaskItself.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItself.swift; sourceTree = "<group>"; };
+		780416BC2152D9FA0065B0A9 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				7803DB2321503342004EF723 /* Menu.swift */,
 				7803DB252150334F004EF723 /* Task.swift */,
 				7803DB2721516994004EF723 /* TaskItself.swift */,
+				780416BC2152D9FA0065B0A9 /* Login.swift */,
 			);
 			path = "Task Manager Project";
 			sourceTree = "<group>";
@@ -129,6 +132,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7803DB2421503342004EF723 /* Menu.swift in Sources */,
+				780416BD2152D9FA0065B0A9 /* Login.swift in Sources */,
 				7803DB2821516994004EF723 /* TaskItself.swift in Sources */,
 				7803DB262150334F004EF723 /* Task.swift in Sources */,
 				7803DB1D21502285004EF723 /* main.swift in Sources */,

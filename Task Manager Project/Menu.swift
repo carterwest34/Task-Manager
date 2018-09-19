@@ -27,6 +27,7 @@ class Menu {
 |        6) Mark A Task As Incomplete         |
 |        7) Delete A Task                     |
 |        8) Exit Task Manager                 |
+|        9) Edit Task                         |
 |                                             |
 -----------------------------------------------
 
@@ -35,7 +36,7 @@ class Menu {
     
     func getInput() -> Int {
         var userInput = Int(readLine()!)
-        while userInput == nil || userInput! < 1 || userInput! > 8 {
+        while userInput == nil || userInput! < 1 || userInput! > 9 {
             print("Please provide a valid answer")
             userInput = Int(readLine()!)
         }
@@ -82,6 +83,10 @@ class Menu {
         case 8:
             print("Thanks for using the application")
             taskManager.quitTaskManager()
+        case 9:
+            print("You have chosen to edit a task.")
+            taskManager.editTask()
+            taskManager.postUseOptions()
         default:
             break
         }
