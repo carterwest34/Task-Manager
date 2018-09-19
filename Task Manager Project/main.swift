@@ -8,6 +8,10 @@
 
 import Foundation
 
+let dateFormatter = DateFormatter()
+
+dateFormatter.dateFormat = "MM/dd/yyyy"
+
 var completedArray: [Task] = []
 
 var taskArray: [Task] = []

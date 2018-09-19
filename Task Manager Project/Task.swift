@@ -24,19 +24,64 @@ class TaskManager {
             print("Please enter a category")
             userAddDescription = readLine()!
         }
-        let newTask = Task(task: userCreateNewTask, description: userAddDescription, completed: false)
+        print("Would you like to add a date to this task to be completed by? (Y/N)")
+        var userAddDate = readLine()?.uppercased()
+        while userAddDate != "Y" && userAddDate != "N" {
+            print("Please enter a valid answer.")
+            userAddDate = readLine()?.uppercased()
+        }
+        if userAddDate == "Y" {
+            
+            print("Please add a complete due date (MM/dd/yyyy)")
+            var userDueDateAddition = readLine()
+            while userDueDateAddition == "" {
+                print("Please enter a valid date.")
+                userDueDateAddition = readLine()
+            }
+            
+            var validDateObject = false
+            
+            while validDateObject == false {
+                if let dueDateValidOrNot = dateFormatter.date(from: userDueDateAddition!) {
+                    let newTask = Task(task: userCreateNewTask, description: userAddDescription, completed: false, completeByDate: dateFormatter.date(from: userDueDateAddition!))
+                    taskArray.append(newTask)
+                    validDateObject = true
+                } else {
+                    print("Please enter a valid date object.")
+                    userDueDateAddition = readLine()
+                    validDateObject = false
+                }
+            }
+            
+            
+            
+            
+            
+            
+            if let dueDate = userDueDateAddition {
+                print("You have successfully added the task: \(userCreateNewTask) to your task manager! It is due to be completed by \(String(describing: dueDate))")
+            }
+            
+        } else {
+            let newTask2 = Task(task: userCreateNewTask, description: userAddDescription, completed: false, completeByDate: nil)
+            
+            taskArray.append(newTask2)
+            
+            print("You have successfully added the task: \(userCreateNewTask) to your task manager!")
+        }
         
-        taskArray.append(newTask)
-        
-        print("You have successfully added the task: \(userCreateNewTask)")
     }
     
     func seeListOfAllTasks() {
         print("Here's a list of all tasks:")
         var counter = 1
+        
         for tasks in 0..<taskArray.count {
-            print("\(counter)) \(taskArray[tasks].task) - Completed: \(taskArray[tasks].completed)")
+            
+            if let dueDate2 = taskArray[tasks].completeByDate {
+                print("\(counter)) \(taskArray[tasks].task) - Completed: \(taskArray[tasks].completed) - Designated Complete Due Date: \(dateFormatter.string(from: dueDate2))")
             counter += 1
+            }
         }
         if taskArray.count == 0 {
             print("There are no tasks, completed or uncompleted.")
@@ -48,13 +93,13 @@ class TaskManager {
         print("Here's a list of all completed tasks:")
         var taskNumber = 0
         
-            for _ in taskArray {
-                if taskArray[taskNumber].completed == true {
+        for _ in taskArray {
+            if taskArray[taskNumber].completed == true {
                 print("\(taskNumber + 1)) \(taskArray[taskNumber].task)")
-               
+                
                 taskNumber += 1
             }
-                
+            
         }
         if taskNumber == 0 {
             print("There are no completed tasks.")
@@ -75,8 +120,8 @@ class TaskManager {
                 
                 taskNumber2 += 1
             }
-           
-            }
+            
+        }
         if taskNumber2 == 0 {
             print("There are no uncompleted tasks.")
         }
@@ -97,7 +142,7 @@ class TaskManager {
         }
         if taskNumber3 == 0 {
             print("There are no uncompleted tasks.")
-        
+            
         }
         
         print("Which task would you like to mark as complete?")
@@ -123,14 +168,14 @@ class TaskManager {
         }
         
         if completedArray.count > 0 {
-        print("Which task would you like to mark as incomplete?")
-        var userMarkIncompleteAnswer = Int(readLine()!)! - 1
-        while userMarkIncompleteAnswer == nil || userMarkIncompleteAnswer < 0 || userMarkIncompleteAnswer > completedArray.count {
-            print("Please enter a valid answer. (1 - \(completedArray.count)")
-            userMarkIncompleteAnswer = Int(readLine()!)! - 1
-        }
-        print("You have succesfully marked task: \(completedArray[userMarkIncompleteAnswer].task) as incomplete")
-        taskArray[userMarkIncompleteAnswer].completed = false
+            print("Which task would you like to mark as incomplete?")
+            var userMarkIncompleteAnswer = Int(readLine()!)! - 1
+            while userMarkIncompleteAnswer == nil || userMarkIncompleteAnswer < 0 || userMarkIncompleteAnswer > completedArray.count {
+                print("Please enter a valid answer. (1 - \(completedArray.count)")
+                userMarkIncompleteAnswer = Int(readLine()!)! - 1
+            }
+            print("You have succesfully marked task: \(completedArray[userMarkIncompleteAnswer].task) as incomplete")
+            taskArray[userMarkIncompleteAnswer].completed = false
             completedArray.remove(at: userMarkIncompleteAnswer)
         } else {
             print("There are no possible tasks to mark incomplete.")
@@ -179,6 +224,7 @@ class TaskManager {
         } else {
             print("Thanks for using the application.")
         }
+        
         
     }
 }
