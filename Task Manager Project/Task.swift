@@ -21,7 +21,7 @@ class TaskManager {
         print("What would be the description of this task?")
         var userAddDescription = readLine()!
         while userAddDescription == "" {
-            print("Please enter a category")
+            print("Please enter a description.")
             userAddDescription = readLine()!
         }
         print("On a scale of 1 - 10, what level of priority is this task?")
@@ -74,24 +74,95 @@ class TaskManager {
     }
     
     func seeListOfAllTasks() {
-        print("Here's a list of all tasks:")
-        var counter = 1
+        let orderTaskArray = orderTasks()
         
-        for tasks in 0..<taskArray.count {
-            
-            if let dueDate2 = taskArray[tasks].completeByDate {
-                print("\(counter)) \(taskArray[tasks].task) - Completed: \(taskArray[tasks].completed) - Designated Complete Due Date: \(dateFormatter.string(from: dueDate2))")
-                counter += 1
-            } else {
-                print("\(counter)) \(taskArray[tasks].task) - Completed: \(taskArray[tasks].completed)")
-                counter += 1
-            }
-            if taskArray.count == 0 {
-                print("There are no tasks, completed or uncompleted.")
-            }
-            
+        if orderTaskArray.count == 0 {
+            print("There are no available tasks, complete or incomplete.")
         }
+        print("Here's a list of all tasks:")
+        
+        var counter12 = 0
+        for _ in orderTaskArray {
+            if let dueDate4 = orderTaskArray[counter12].completeByDate {
+                print("\(counter12 + 1)) Task: \(orderTaskArray[counter12].task) - Description: \(orderTaskArray[counter12].description) - Priority Level - \(orderTaskArray[counter12].priority) - Designated Complete Date: \(dateFormatter.string(from: dueDate4))")
+                counter12 += 1
+            } else {
+                print("\(counter12 + 1)) Task: \(orderTaskArray[counter12].task) - Description: \(orderTaskArray[counter12].description) - Priority Level - \(orderTaskArray[counter12].priority)")
+                counter12 += 1
+            }
+        }
+        
+        
     }
+    enum Priority: Int {
+        case one = 1
+        case two = 2
+        case three = 3
+        case four = 4
+        case five = 5
+        case six = 6
+        case seven = 7
+        case eight = 8
+        case nine = 9
+        case ten = 10
+        
+    }
+    
+    func orderTasks() -> [Task]{
+        for tasks in taskArray {
+            if tasks.priority == Priority.ten.rawValue{
+                sortedTask.append(tasks)
+            }
+        }
+        for tasks in taskArray {
+            if tasks.priority == Priority.nine.rawValue{
+                sortedTask.append(tasks)
+            }
+        }
+        for tasks in taskArray {
+            if tasks.priority == Priority.eight.rawValue{
+                sortedTask.append(tasks)
+            }
+        }
+        for tasks in taskArray {
+            if tasks.priority == Priority.seven.rawValue{
+                sortedTask.append(tasks)
+            }
+        }
+        for tasks in taskArray {
+            if tasks.priority == Priority.six.rawValue{
+                sortedTask.append(tasks)
+            }
+        }
+        for tasks in taskArray {
+            if tasks.priority == Priority.five.rawValue{
+                sortedTask.append(tasks)
+            }
+        }
+        for tasks in taskArray {
+            if tasks.priority == Priority.four.rawValue{
+                sortedTask.append(tasks)
+            }
+        }
+        for tasks in taskArray {
+            if tasks.priority == Priority.three.rawValue{
+                sortedTask.append(tasks)
+            }
+        }
+        for tasks in taskArray {
+            if tasks.priority == Priority.two.rawValue{
+                sortedTask.append(tasks)
+            }
+        }
+        for tasks in taskArray {
+            if tasks.priority == Priority.one.rawValue{
+                sortedTask.append(tasks)
+            }
+        }
+        return sortedTask
+    }
+    
+    
     
     func seeListOfCompletedTasks() {
         print("Here's a list of all completed tasks:")
@@ -158,9 +229,7 @@ class TaskManager {
         completedArray.append(taskArray[userMarkCompleteAnswer])
         print("You have succesfully marked task: \(taskArray[userMarkCompleteAnswer].task) as completed.")
         taskArray[userMarkCompleteAnswer].completed = true
-        
-        
-    }
+        }
     
     func markTaskIncomplete() {
         print("Here's a list of possible tasks you can mark incomplete:")
@@ -173,7 +242,7 @@ class TaskManager {
         
         if completedArray.count > 0 {
             print("Which task would you like to mark as incomplete?")
-            var userMarkIncompleteAnswer = Int(readLine()!)! - 1
+            var userMarkIncompleteAnswer = Int(readLine()!)!
             while userMarkIncompleteAnswer == nil || userMarkIncompleteAnswer < 0 || userMarkIncompleteAnswer > completedArray.count {
                 print("Please enter a valid answer. (1 - \(completedArray.count)")
                 userMarkIncompleteAnswer = Int(readLine()!)! - 1
@@ -227,6 +296,7 @@ class TaskManager {
             print("What would you like to do?")
         } else {
             print("Thanks for using the application.")
+            exit(0)
         }
         
         
@@ -236,131 +306,162 @@ class TaskManager {
         
         taskManager.seeListOfAllTasks()
         print("Which task would you like to edit?")
-        var userEditChoice = Int(readLine()!)! - 1
-        while userEditChoice == nil || userEditChoice < 0 || userEditChoice > taskArray.count {
-            print("Please enter a valid answer.")
-            userEditChoice = Int(readLine()!)! - 1
-        }
         
-        if let dueDate3 = taskArray[userEditChoice].completeByDate {
+        while sortedTask.count > 0 {
+            var userEditChoice = Int(readLine()!)! - 1
+            while userEditChoice == nil || userEditChoice < 0 || userEditChoice > sortedTask.count {
+                print("Please enter a valid answer.")
+                userEditChoice = Int(readLine()!)! - 1
+            }
             
-            print("""
+            if let dueDate3 = sortedTask[userEditChoice].completeByDate {
                 
-                Ok! Here's the different aspects of the task: \(taskArray[userEditChoice].task) you are able to edit:
-                
-                1) Task: \(taskArray[userEditChoice].task)
-                2) Task Description: \(taskArray[userEditChoice].description)
-                3) Task Complete Due Date: \(dateFormatter.string(from: dueDate3))
-                
-                """)
-            print("Which aspect of task: \(taskArray[userEditChoice].task) would you like to alter? (1 - 3)")
-            var userEditAspectChoice = Int(readLine()!)!
-            while userEditAspectChoice == nil || userEditAspectChoice < 1 && userEditAspectChoice > 3 {
-                print("Please enter a valid index (1 - 3)")
-                userEditAspectChoice = Int(readLine()!)!
-            }
-            switch userEditAspectChoice {
-                
-            case 1:
-                print("You have chosen to change the task aspect of task: \(taskArray[userEditChoice].task)")
-                print("Current task: \(taskArray[userEditChoice].task)")
-                print("What are you changing the task to?")
-                var editTask = readLine()
-                while editTask == "" {
-                    print("Please enter a valid task.")
-                    editTask = readLine()
+                print("""
+                    
+                    Ok! Here's the different aspects of the task: \(sortedTask[userEditChoice].task) you are able to edit:
+                    
+                    1) Task: \(sortedTask[userEditChoice].task)
+                    2) Task Description: \(sortedTask[userEditChoice].description)
+                    3) Task Complete Due Date: \(dateFormatter.string(from: dueDate3))
+                    4) Task Priority: \(sortedTask[userEditChoice].priority)
+                    
+                    """)
+                print("Which aspect of task: \(sortedTask[userEditChoice].task) would you like to alter? (1 - 4)")
+                var userEditAspectChoice = Int(readLine()!)!
+                while userEditAspectChoice == nil || userEditAspectChoice < 1 && userEditAspectChoice > 4 {
+                    print("Please enter a valid index (1 - 4)")
+                    userEditAspectChoice = Int(readLine()!)!
                 }
-                taskArray[userEditChoice].task = editTask!
-                print("You have successfully changed the task to: \(editTask!))")
-                
-            case 2:
-                print("You have chosen to change the description aspect of task: \(taskArray[userEditChoice].task)")
-                print("Current description: \(taskArray[userEditChoice].description)")
-                print("What are you changing the description to?")
-                var editDescription = readLine()
-                while editDescription == "" {
-                    print("Please enter a valid description.")
-                    editDescription = readLine()
-                }
-                taskArray[userEditChoice].description = editDescription!
-                print("You have successfully changed the description of task: \(taskArray[userEditChoice].task) to \(taskArray[userEditChoice].description)")
-                
-            case 3:
-                if let dueDate4 = taskArray[userEditChoice].completeByDate {
-                    print("You have chosen to change the completed date aspect of the task: \(taskArray[userEditChoice].task)")
-                    print("Current date to be completed: \(dateFormatter.string(from: dueDate4))")
-                    print("What are you changing the date to? (MM/dd/yyyy)")
-                    var editDate = readLine()
-                    while editDate == "" {
-                        print("Please enter a valid date.")
-                        editDate = readLine()
+                switch userEditAspectChoice {
+                    
+                case 1:
+                    print("You have chosen to change the task aspect of task: \(sortedTask[userEditChoice].task)")
+                    print("Current task: \(sortedTask[userEditChoice].task)")
+                    print("What are you changing the task to?")
+                    var editTask = readLine()
+                    while editTask == "" {
+                        print("Please enter a valid task.")
+                        editTask = readLine()
                     }
+                    sortedTask[userEditChoice].task = editTask!
+                    print("You have successfully changed the task to: \(editTask!))")
                     
-                    var validDateObject = false
+                case 2:
+                    print("You have chosen to change the description aspect of task: \(sortedTask[userEditChoice].task)")
+                    print("Current description: \(sortedTask[userEditChoice].description)")
+                    print("What are you changing the description to?")
+                    var editDescription = readLine()
+                    while editDescription == "" {
+                        print("Please enter a valid description.")
+                        editDescription = readLine()
+                    }
+                    sortedTask[userEditChoice].description = editDescription!
+                    print("You have successfully changed the description of task: \(sortedTask[userEditChoice].task) to \(sortedTask[userEditChoice].description)")
                     
-                    while validDateObject == false {
-                        if let dueDateValidOrNot = dateFormatter.date(from: editDate!) {
-                            taskArray[userEditChoice].completeByDate = dueDateValidOrNot
-                            print("You have successfully chenged the date of task: \(taskArray[userEditChoice].task) to \(dueDateValidOrNot)")
-                            validDateObject = true
-                        } else {
-                            print("Please enter a valid date object.")
+                case 3:
+                    if let dueDate4 = sortedTask[userEditChoice].completeByDate {
+                        print("You have chosen to change the completed date aspect of the task: \(sortedTask[userEditChoice].task)")
+                        print("Current date to be completed: \(dateFormatter.string(from: dueDate4))")
+                        print("What are you changing the date to? (MM/dd/yyyy)")
+                        var editDate = readLine()
+                        while editDate == "" {
+                            print("Please enter a valid date.")
                             editDate = readLine()
-                            validDateObject = false
                         }
+                        
+                        var validDateObject = false
+                        
+                        while validDateObject == false {
+                            if let dueDateValidOrNot = dateFormatter.date(from: editDate!) {
+                                sortedTask[userEditChoice].completeByDate = dueDateValidOrNot
+                                print("You have successfully chenged the date of task: \(sortedTask[userEditChoice].task) to \(dueDateValidOrNot)")
+                                validDateObject = true
+                            } else {
+                                print("Please enter a valid date object.")
+                                editDate = readLine()
+                                validDateObject = false
+                            }
+                        }
+                        
                     }
+                case 4:
+                    print("You have chosen to change the priority aspect of task: \(sortedTask[userEditChoice].task)")
+                    print("Current priority: \(sortedTask[userEditChoice].priority)")
+                    print("What are you changing the priority to?")
+                    var editPriority = Int(readLine()!)!
+                    while editPriority == nil || editPriority < 1 || editPriority > 10 {
+                        print("Please enter a valid priority level.")
+                        editPriority = Int(readLine()!)!
+                    }
+                    sortedTask[userEditChoice].priority = editPriority
+                    print("You have successfully changed the priority of task: \(sortedTask[userEditChoice].task) to \(sortedTask[userEditChoice].priority)")
+                default:
+                    break
+                }
+            } else {
+                print("""
                     
+                    Ok! Here's the different aspects of the task: \(sortedTask[userEditChoice].task) you are able to edit:
+                    
+                    1) Task: \(sortedTask[userEditChoice].task)
+                    2) Task Description: \(sortedTask[userEditChoice].description)
+                    3) Task Priority: \(sortedTask[userEditChoice].priority)
+                    
+                    """)
+                print("Which aspect of task: \(sortedTask[userEditChoice].task) would you like to alter? (1 - 3)")
+                var userEditAspectChoice = Int(readLine()!)!
+                while userEditAspectChoice == nil || userEditAspectChoice < 1 || userEditAspectChoice > 3 {
+                    print("Please enter a valid index (1 - 3)")
+                    userEditAspectChoice = Int(readLine()!)!
                 }
-            default:
-                break
-            }
-        } else {
-            print("""
-                
-                Ok! Here's the different aspects of the task: \(taskArray[userEditChoice].task) you are able to edit:
-                
-                1) Task: \(taskArray[userEditChoice].task)
-                2) Task Description: \(taskArray[userEditChoice].description)
-                
-                """)
-            print("Which aspect of task: \(taskArray[userEditChoice].task) would you like to alter? (1 - 2)")
-            var userEditAspectChoice = Int(readLine()!)!
-            while userEditAspectChoice == nil || userEditAspectChoice < 1 || userEditAspectChoice > 2 {
-                print("Please enter a valid index (1 - 2")
-                userEditAspectChoice = Int(readLine()!)!
-            }
-            switch userEditAspectChoice {
-                
-            case 1:
-                print("You have chosen to change the task aspect of task: \(taskArray[userEditChoice].task)")
-                print("Current task: \(taskArray[userEditChoice].task)")
-                print("What are you changing the task to?")
-                var editTask = readLine()
-                while editTask == "" {
-                    print("Please enter a valid task.")
-                    editTask = readLine()
+                switch userEditAspectChoice {
+                    
+                case 1:
+                    print("You have chosen to change the task aspect of task: \(sortedTask[userEditChoice].task)")
+                    print("Current task: \(sortedTask[userEditChoice].task)")
+                    print("What are you changing the task to?")
+                    var editTask = readLine()
+                    while editTask == "" {
+                        print("Please enter a valid task.")
+                        editTask = readLine()
+                    }
+                    sortedTask[userEditChoice].task = editTask!
+                    print("You have successfully changed the task to: \(editTask!))")
+                    
+                case 2:
+                    print("You have chosen to change the description aspect of task: \(sortedTask[userEditChoice].task)")
+                    print("Current description: \(sortedTask[userEditChoice].description)")
+                    print("What are you changing the description to?")
+                    var editDescription = readLine()
+                    while editDescription == "" {
+                        print("Please enter a valid description.")
+                        editDescription = readLine()
+                    }
+                    sortedTask[userEditChoice].description = editDescription!
+                    print("You have successfully changed the description of task: \(sortedTask[userEditChoice].task) to \(sortedTask[userEditChoice].description)")
+                case 3:
+                    print("You have chosen to change the priority aspect of task: \(sortedTask[userEditChoice].task)")
+                    print("Current priority: \(sortedTask[userEditChoice].priority)")
+                    print("What are you changing the priority to?")
+                    var editPriority = Int(readLine()!)!
+                    while editPriority == nil || editPriority < 1 || editPriority > 10 {
+                        print("Please enter a valid priority level.")
+                        editPriority = Int(readLine()!)!
+                        }
+                    sortedTask[userEditChoice].priority = editPriority
+                    print("You have successfully changed the priority of task: \(sortedTask[userEditChoice].task) to \(sortedTask[userEditChoice].priority)")
+                default:
+                    break
                 }
-                taskArray[userEditChoice].task = editTask!
-                print("You have successfully changed the task to: \(editTask!))")
-                
-            case 2:
-                print("You have chosen to change the description aspect of task: \(taskArray[userEditChoice].task)")
-                print("Current description: \(taskArray[userEditChoice].description)")
-                print("What are you changing the description to?")
-                var editDescription = readLine()
-                while editDescription == "" {
-                    print("Please enter a valid description.")
-                    editDescription = readLine()
-                }
-                taskArray[userEditChoice].description = editDescription!
-                print("You have successfully changed the description of task: \(taskArray[userEditChoice].task) to \(taskArray[userEditChoice].description)")
-                
-            default:
-                break
             }
+            
         }
         
+        if  sortedTask.count == 0 {
+            print("there are no tasks to edit.")
+        }
     }
+    
 }
 
 

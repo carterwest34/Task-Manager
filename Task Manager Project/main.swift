@@ -8,20 +8,15 @@
 
 import Foundation
 
+var validInt = false
+var sortedTask: [Task] = []
 let dateFormatter = DateFormatter()
-
 dateFormatter.dateFormat = "MM/dd/yyyy"
-
 var completedArray: [Task] = []
-
 var taskArray: [Task] = []
-
 var runningTaskManager = true
-
 print("Welcome to your Task Manager.")
-
 let printMenu = Menu()
-
 printMenu.taskMenu()
 
 print("What would you like to do?")
