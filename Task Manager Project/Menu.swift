@@ -43,7 +43,7 @@ class Menu {
         if let input = userInput{
         return input
         }
-        return 0
+        return 0 
     }
     
     

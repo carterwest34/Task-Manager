@@ -8,7 +8,7 @@
 
 import Foundation
 
-var validInt = false
+var validateIntInput = ValidateIntInput()
 var sortedTask: [Task] = []
 let dateFormatter = DateFormatter()
 dateFormatter.dateFormat = "MM/dd/yyyy"
