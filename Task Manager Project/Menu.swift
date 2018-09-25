@@ -28,6 +28,8 @@ class Menu {
 |        7) Delete A Task                     |
 |        8) Exit Task Manager                 |
 |        9) Edit Task                         |
+|       10) Create Login                      |
+|       11) Change Login Info                 |
 |                                             |
 -----------------------------------------------
 
@@ -36,7 +38,7 @@ class Menu {
     
     func getInput() -> Int {
         var userInput = Int(readLine()!)
-        while userInput == nil || userInput! < 1 || userInput! > 9 {
+        while userInput == nil || userInput! < 1 || userInput! > 11 {
             print("Please provide a valid answer")
             userInput = Int(readLine()!)
         }
@@ -54,21 +56,25 @@ class Menu {
             taskManager.createNewTask()
             sleep(2)
             taskManager.postUseOptions()
+            
         case 2:
             print("You have chosen to see a list of all tasks, completed and uncompleted.")
             taskManager.seeListOfAllTasks()
             sleep(2)
             taskManager.postUseOptions()
+            
         case 3:
             print("You have chosen to see a list of all completed tasks.")
             taskManager.seeListOfCompletedTasks()
             sleep(2)
             taskManager.postUseOptions()
+            
         case 4:
             print("You have chosen to see a list of all uncompleted tasks.")
             taskManager.seeListOfUncompletedTasks()
             sleep(2)
             taskManager.postUseOptions()
+            
         case 5:
             print("You have chosen to mark a task as complete.")
             taskManager.markTaskComplete()
@@ -91,11 +97,25 @@ class Menu {
             print("Thanks for using the application")
             sleep(1)
             taskManager.quitTaskManager()
+            
         case 9:
             print("You have chosen to edit a task.")
             taskManager.editTask()
             sleep(2)
             taskManager.postUseOptions()
+            
+        case 10:
+            print("You have chosen to create your login information.")
+            login.setupUssrnameAndPassword()
+            sleep(2)
+            taskManager.postUseOptions()
+            
+        case 11:
+            print("You have chosen to change your login information")
+            login.changeLogInInfo()
+            sleep(2)
+            taskManager.postUseOptions()
+            
         default:
             break
         }

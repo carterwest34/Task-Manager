@@ -8,7 +8,7 @@
 
 import Foundation
 
-let login = Login(username: "username", password: "password") 
+let login = Login(username: "username", password: "password")
 var easterEggs = EasterEggs()
 var validateIntInput = ValidateIntInput()
 var sortedTask: [Task] = []
@@ -20,6 +20,7 @@ var runningTaskManager = true
 
 
 login.logIn()
+sleep(1)
 print("Welcome to your Task Manager.")
 sleep(1)
 let printMenu = Menu()

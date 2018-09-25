@@ -58,6 +58,7 @@ class Login {
             print("Password:")
             passwordLogin = readLine()
         }
+        print("You have successfully logged in.")
     }
     
     func changeLogInInfo() {
