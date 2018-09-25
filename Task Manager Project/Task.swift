@@ -18,6 +18,7 @@ class TaskManager {
             print("Please enter a task.")
             userCreateNewTask = readLine()!
         }
+        easterEggs.taskInputEasterEgg(userInput: userCreateNewTask)
         print("What would be the description of this task?")
         var userAddDescription = readLine()!
         while userAddDescription == "" {
@@ -45,7 +46,7 @@ class TaskManager {
             var validDateObject = false
             
             while validDateObject == false {
-                if let dueDateValidOrNot = dateFormatter.date(from: userDueDateAddition!) {
+                if dateFormatter.date(from: userDueDateAddition!) != nil {
                     let newTask = Task(task: userCreateNewTask, description: userAddDescription, completed: false, completeByDate: dateFormatter.date(from: userDueDateAddition!), priority: handlePrioInput)
                     taskArray.append(newTask)
                     validDateObject = true
@@ -214,9 +215,10 @@ class TaskManager {
         }
         if taskNumber3 == 0 {
             print("There are no uncompleted tasks.")
-            
+        
         }
         
+        if taskNumber3 > 0 {
         print("Which task would you like to mark as complete?")
         let userValidatedMarkCompleted = validateIntInput.markCompleteValidate()
         
@@ -224,6 +226,7 @@ class TaskManager {
         print("You have succesfully marked task: \(taskArray[userValidatedMarkCompleted - 1].task) as completed.")
         taskArray[userValidatedMarkCompleted - 1].completed = true
         }
+    }
     
     func markTaskIncomplete() {
         print("Here's a list of possible tasks you can mark incomplete:")

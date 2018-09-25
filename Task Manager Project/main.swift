@@ -8,6 +8,8 @@
 
 import Foundation
 
+let login = Login(username: "username", password: "password") 
+var easterEggs = EasterEggs()
 var validateIntInput = ValidateIntInput()
 var sortedTask: [Task] = []
 let dateFormatter = DateFormatter()
@@ -15,10 +17,14 @@ dateFormatter.dateFormat = "MM/dd/yyyy"
 var completedArray: [Task] = []
 var taskArray: [Task] = []
 var runningTaskManager = true
+
+
+login.logIn()
 print("Welcome to your Task Manager.")
+sleep(1)
 let printMenu = Menu()
 printMenu.taskMenu()
-
+sleep(1)
 print("What would you like to do?")
 
 repeat {

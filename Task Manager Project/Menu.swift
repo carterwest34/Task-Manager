@@ -52,40 +52,49 @@ class Menu {
         case 1:
             print("You have chosen to add a task.")
             taskManager.createNewTask()
+            sleep(2)
             taskManager.postUseOptions()
         case 2:
             print("You have chosen to see a list of all tasks, completed and uncompleted.")
             taskManager.seeListOfAllTasks()
+            sleep(2)
             taskManager.postUseOptions()
         case 3:
             print("You have chosen to see a list of all completed tasks.")
             taskManager.seeListOfCompletedTasks()
+            sleep(2)
             taskManager.postUseOptions()
         case 4:
             print("You have chosen to see a list of all uncompleted tasks.")
             taskManager.seeListOfUncompletedTasks()
+            sleep(2)
             taskManager.postUseOptions()
         case 5:
             print("You have chosen to mark a task as complete.")
             taskManager.markTaskComplete()
+            sleep(2)
             taskManager.postUseOptions()
             
         case 6:
             print("You have chosen to mark a task as incomplete.")
             taskManager.markTaskIncomplete()
+            sleep(2)
             taskManager.postUseOptions()
             
         case 7:
             print("You have chosen to delete a task.")
             taskManager.deleteTask()
+            sleep(2)
             taskManager.postUseOptions()
             
         case 8:
             print("Thanks for using the application")
+            sleep(1)
             taskManager.quitTaskManager()
         case 9:
             print("You have chosen to edit a task.")
             taskManager.editTask()
+            sleep(2)
             taskManager.postUseOptions()
         default:
             break

@@ -21,7 +21,7 @@ class ValidateIntInput {
     
     func markCompleteValidate() -> Int {
         var markCompleteChoice = Int(readLine()!)
-        while markCompleteChoice == nil || markCompleteChoice! < 0 || markCompleteChoice! > taskArray.count {
+        while markCompleteChoice == nil || markCompleteChoice! <= 0 || markCompleteChoice! > taskArray.count {
             print("Please provide a valid task index")
             markCompleteChoice = Int(readLine()!)
         }
@@ -30,7 +30,7 @@ class ValidateIntInput {
     
     func markIncompleteValidate() -> Int {
         var markIncompleteChoice = Int(readLine()!)
-        while markIncompleteChoice == nil || markIncompleteChoice! < 0 || markIncompleteChoice! > completedArray.count {
+        while markIncompleteChoice == nil || markIncompleteChoice! <= 0 || markIncompleteChoice! > completedArray.count {
             print("Please provide a valid task index")
             markIncompleteChoice = Int(readLine()!)
         }
@@ -39,7 +39,7 @@ class ValidateIntInput {
     
     func deleteTaskValidate() -> Int {
         var deleteChoice = Int(readLine()!)
-        while deleteChoice == nil || deleteChoice! < 0 || deleteChoice! > taskArray.count {
+        while deleteChoice == nil || deleteChoice! <= 0 || deleteChoice! > taskArray.count {
             print("Please provide a valid task index")
             deleteChoice = Int(readLine()!)
         }
@@ -48,7 +48,7 @@ class ValidateIntInput {
     
     func chooseEditTask() -> Int {
         var editTaskChoice = Int(readLine()!)
-        while editTaskChoice == nil || editTaskChoice! < 0 || editTaskChoice! > sortedTask.count {
+        while editTaskChoice == nil || editTaskChoice! <= 0 || editTaskChoice! > sortedTask.count {
             print("Please provide a valid task index")
             editTaskChoice = Int(readLine()!)
         }

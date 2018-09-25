@@ -13,6 +13,7 @@
 		7803DB2821516994004EF723 /* TaskItself.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7803DB2721516994004EF723 /* TaskItself.swift */; };
 		780416BD2152D9FA0065B0A9 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780416BC2152D9FA0065B0A9 /* Login.swift */; };
 		780416D221547BE00065B0A9 /* ValidateIntInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780416D121547BE00065B0A9 /* ValidateIntInput.swift */; };
+		78A942AB2155467A00997041 /* EasterEggs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A942AA2155467A00997041 /* EasterEggs.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,6 +36,7 @@
 		7803DB2721516994004EF723 /* TaskItself.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItself.swift; sourceTree = "<group>"; };
 		780416BC2152D9FA0065B0A9 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		780416D121547BE00065B0A9 /* ValidateIntInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateIntInput.swift; sourceTree = "<group>"; };
+		78A942AA2155467A00997041 /* EasterEggs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasterEggs.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				7803DB2721516994004EF723 /* TaskItself.swift */,
 				780416BC2152D9FA0065B0A9 /* Login.swift */,
 				780416D121547BE00065B0A9 /* ValidateIntInput.swift */,
+				78A942AA2155467A00997041 /* EasterEggs.swift */,
 			);
 			path = "Task Manager Project";
 			sourceTree = "<group>";
@@ -134,6 +137,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78A942AB2155467A00997041 /* EasterEggs.swift in Sources */,
 				780416D221547BE00065B0A9 /* ValidateIntInput.swift in Sources */,
 				7803DB2421503342004EF723 /* Menu.swift in Sources */,
 				780416BD2152D9FA0065B0A9 /* Login.swift in Sources */,
