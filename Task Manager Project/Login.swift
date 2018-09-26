@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Login {
+class Login { //This class is used to store the methods of logging in, creating login info, and changing login info.
     var username: String
     var password: String
     
@@ -17,7 +17,8 @@ class Login {
         self.password = password
     }
     
-    func setupUssrnameAndPassword() {
+    func setupUssrnameAndPassword() { //This method of the Login class is used to setup the login username and password, but since theres no persistence to the program, this function is kind of useless lol.
+        
         print("What would you like your username to be?")
         var usernameInput = readLine()
         while usernameInput == "" {
@@ -39,6 +40,7 @@ class Login {
     }
     
     func logIn() {
+        print("Login")
         print("Username:")
         var usernameLogin = readLine()
         while usernameLogin == "" {
@@ -59,6 +61,7 @@ class Login {
             passwordLogin = readLine()
         }
         print("You have successfully logged in.")
+        sleep(2)
     }
     
     func changeLogInInfo() {
@@ -69,7 +72,8 @@ class Login {
             usernameInput = readLine()
         }
         username = usernameInput!
-        print("You have successfully changed your username to \(username)")
+        
+        print("You have successfully changed your username to \(username)") 
         
         print("What would you like to change your password to?")
         var passwordInput = readLine()

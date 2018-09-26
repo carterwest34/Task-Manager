@@ -8,10 +8,12 @@
 
 import Foundation
 
-class EasterEggs {
-    func taskInputEasterEgg(userInput: String) {
+class EasterEggs { //Making a class just for the easter eggs, so we can call them whenever we want to activate one.
+    
+    func taskInputEasterEgg(userInput: String) { //Made userInput a parameter that will be of type string. We will pass in the string value of the task they want to complete. If the string has a certain value, a certain print statement "Easter Egg" will appear.
+        
         if userInput == "do do do do do do do" {
-            print(
+            print( //Made the print statement multi-line in order to pass in a large object, in this case, mario.
             """
                 _____________________▄▄▄▀▀▀▀▀▀▀▄
                 _______________▄▀▀____▀▀▀▀▄____█
